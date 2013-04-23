@@ -165,6 +165,10 @@
 		<item name="type">empty</item>
 	</style>
 	
+	<style name="GreenDroid.Widget.ActionBar.UserDefin">
+		<item name="type">userdefin</item>
+	</style>
+	
 	<style name="GreenDroid.Widget.ActionBar.Item" parent="@style/GreenDroid.Widget">
 		<item name="android:layout_width">@dimen/gd_action_bar_height</item>
 		<item name="android:background">?attr/gdActionBarItemBackground</item>

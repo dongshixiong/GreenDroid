@@ -171,6 +171,7 @@
 			<enum name="normal" value="0" />
 			<enum name="dashboard" value="1" />
 			<enum name="empty" value="2" />
+			<enum name="userdefin" value="3" />
 		</attr>
 		<attr name="dividerDrawable" />
 		<attr name="dividerWidth" />

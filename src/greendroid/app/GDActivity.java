@@ -169,6 +169,8 @@ public class GDActivity extends Activity implements ActionBarActivity {
 
     public int createLayout() {
         switch (mActionBarType) {
+        	case UserDefin:
+        		return R.layout.gd_content_userdefin;
             case Dashboard:
                 return R.layout.gd_content_dashboard;
             case Empty:

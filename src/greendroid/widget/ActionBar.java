@@ -78,7 +78,11 @@ public class ActionBar extends LinearLayout {
          * right. The space that left will be used to display the title of the
          * current Activity.
          */
-        Empty
+        Empty,
+        /**
+         * ActionBar layout will defin by youself 
+         */
+        UserDefin
     }
 
     /**
@@ -108,6 +112,7 @@ public class ActionBar extends LinearLayout {
 
     private TextView mTitleView;
     private ImageButton mHomeButton;
+    private LinearLayout mCenterLinearLayout;
 
     private boolean mMerging = false;
 
@@ -156,6 +161,10 @@ public class ActionBar extends LinearLayout {
         int layoutID;
         int type = a.getInteger(R.styleable.ActionBar_type, -1);
         switch (type) {
+        	case 3:
+        		mType=Type.UserDefin;
+        		layoutID=R.layout.gd_action_bar_userdefin;
+        		break;
             case 2:
                 mType = Type.Empty;
                 layoutID = R.layout.gd_action_bar_empty;
@@ -194,6 +203,10 @@ public class ActionBar extends LinearLayout {
         if (!mMerging) {
 
             switch (mType) {
+            	case UserDefin:
+            		mCenterLinearLayout=(LinearLayout)findViewById(R.id.gd_action_bar_centerlayout);
+            		break;
+            		
                 case Dashboard:
                     mHomeButton = (ImageButton) findViewById(R.id.gd_action_bar_home_item);
                     mHomeButton.setOnClickListener(mClickHandler);
@@ -337,6 +350,15 @@ public class ActionBar extends LinearLayout {
         return item;
     }
     
+    public View SetCenterLayout(View view){
+    	if(mType==Type.UserDefin){
+    		mCenterLinearLayout.addView(view);    		
+    		return view;
+    	} else {
+    		return null;
+    	}
+    } 
+    
     public ActionBarItem SetHeaderItemDrawable(int drawableId){
     	mHeaderActionBarItem.setDrawable(drawableId);
     	return mHeaderActionBarItem;
@@ -411,6 +433,8 @@ public class ActionBar extends LinearLayout {
                 case Normal:
                     layoutId = R.layout.gd_action_bar_normal;
                     break;
+                case UserDefin:
+                	layoutId=R.layout.gd_action_bar_userdefin;
             }
 
             mType = type;
